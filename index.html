@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VAULT / Immersive Creative Marketplace</title>
+  <meta name="description" content="VAULT — An immersive creative marketplace. Experience the future before it arrives. Shop limited streetwear, art objects, and collector pieces." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav" id="main-nav">
+    <div class="nav-left">
+    </div>
+    <div class="nav-center">
+    </div>
+    <div class="nav-right">
+      <a href="#shop" class="nav-link" id="nav-shop">SHOP</a>
+      <a href="#playground" class="nav-link" id="nav-playground">PLAYGROUND</a>
+      <button class="dark-toggle" id="dark-toggle" aria-label="Toggle dark mode">
+        <span class="dark-toggle-icon" id="dark-icon">☾</span>
+        <span id="dark-label">DARK</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <h1 class="hero-title">PROKIT <span class="text-red">B</span><span class="text-green">D</span></h1>
+    <p class="hero-tagline">Best Premium Jersey in Bangladesh</p>
+  </section>
+
+  <!-- Shop Section -->
+  <section class="shop" id="shop">
+    <div class="shop-header">
+      <h1 class="shop-title">PRODUCTS</h1>
+      <div class="shop-filters" role="tablist" aria-label="Product filters">
+        <button class="filter-btn active" role="tab" aria-selected="true" data-filter="all" id="filter-all">SEE ALL</button>
+        <button class="filter-btn" role="tab" aria-selected="false" data-filter="new" id="filter-new">NEW IN</button>
+      </div>
+    </div>
+
+    <div class="products-grid" id="products-grid" role="list">
+      <!-- Products injected by JS -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="main-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <span class="footer-logo">[PROKIT BD]</span>
+        <p class="footer-desc">Premium creative marketplace. Discover the next generation of design objects.</p>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">SHOP</h3>
+        <ul class="footer-links">
+          <li><a href="#" id="footer-all">All Products</a></li>
+          <li><a href="#" id="footer-new">New In</a></li>
+          <li><a href="#" id="footer-best">Best Sellers</a></li>
+          <li><a href="#" id="footer-collab">Collaborations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">INFO</h3>
+        <ul class="footer-links">
+          <li><a href="#" id="footer-about">About</a></li>
+          <li><a href="#" id="footer-shipping">Shipping</a></li>
+          <li><a href="#" id="footer-returns">Returns</a></li>
+          <li><a href="#" id="footer-contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">FOLLOW</h3>
+        <ul class="footer-links">
+          <li><a href="#" id="footer-ig">Instagram</a></li>
+          <li><a href="#" id="footer-tw">Twitter / X</a></li>
+          <li><a href="#" id="footer-tt">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 [PROKIT BD] ALL RIGHTS RESERVED</span>
+      <span class="footer-tag">DISCOVER THE NEXT GENERATION OF DESIGN OBJECTS</span>
+    </div>
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cart-overlay" aria-hidden="true"></div>
+  <aside class="cart-sidebar" id="cart-sidebar" aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-header">
+      <h2 class="cart-title">CART <span class="cart-count" id="cart-count">0</span></h2>
+      <button class="cart-close" id="cart-close" aria-label="Close cart">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+      <div class="cart-empty" id="cart-empty">
+        <span class="cart-empty-icon">[ VOID ]</span>
+        <p>Your cart is empty.</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cart-footer" style="display:none">
+      <div class="cart-total">
+        <span>TOTAL</span>
+          <span id="cart-total-price">0 BDT</span>
+      </div>
+      <a href="https://wa.link/63gh5d" target="_blank" class="btn-checkout" id="btn-checkout" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">ORDER VIA WHATSAPP →</a>
+    </div>
+  </aside>
+
+  <!-- Cart Button -->
+  <button class="cart-btn" id="cart-btn" aria-label="Open cart">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <path d="M16 10a4 4 0 01-8 0"/>
+    </svg>
+    <span class="cart-badge" id="cart-badge" aria-live="polite">0</span>
+  </button>
+
+  <!-- Product Modal -->
+  <div class="modal-overlay" id="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-product-name">
+    <div class="modal" id="product-modal">
+      <button class="modal-close" id="modal-close" aria-label="Close product detail">✕</button>
+      <div class="modal-inner">
+        <div class="modal-image-wrap">
+          <img class="modal-image" id="modal-image" src="" alt="" />
+          <div class="modal-badges" id="modal-badges"></div>
+        </div>
+        <div class="modal-info">
+          <div class="modal-category" id="modal-category"></div>
+          <h2 class="modal-product-name" id="modal-product-name"></h2>
+          <div class="modal-price" id="modal-price"></div>
+          <p class="modal-desc" id="modal-desc"></p>
+          <div class="modal-options" id="modal-options"></div>
+          <div style="display: flex; gap: 10px; margin-top: auto;">
+            <button class="modal-add-cart btn-primary" id="modal-add-cart" style="flex: 1;">ADD TO CART</button>
+            <a href="https://wa.link/63gh5d" target="_blank" class="modal-add-cart" style="flex: 1; background: #25D366; text-decoration: none; display: flex; align-items: center; justify-content: center; color: white;">ORDER NOW</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
