@@ -39,6 +39,66 @@ const products = [
     image: "/images/portugal_away.jpg",
     desc: "Artistic White/Green Portugal Away Jersey.",
     options: { size: ["M","L","XL","XXL"] }
+  },
+  {
+    id: 5,
+    name: "Brazil Jercy (Special Edition)",
+    price: 950,
+    category: "apparel",
+    badges: ["new", "bestseller"],
+    image: "/images/brazil_special.jpg.jpg",
+    desc: "Stunning dark blue and black patterned Brazil Special Edition Jersey.",
+    options: { size: ["M","L","XL","XXL"] }
+  },
+  {
+    id: 6,
+    name: "Brazil Jercy (Home)",
+    price: 950,
+    category: "apparel",
+    badges: ["new"],
+    image: "/images/Brazil Yellow.jpg",
+    desc: "Classic vibrant yellow Brazil Home Jersey with green trim.",
+    options: { size: ["M","L","XL","XXL"] }
+  },
+  {
+    id: 7,
+    name: "Germany Jercy (Home)",
+    price: 950,
+    category: "apparel",
+    badges: ["new"],
+    image: "/images/Germany Home.jpg",
+    desc: "Iconic white Germany Home Jersey with the tricolor chevron.",
+    options: { size: ["M","L","XL","XXL"] }
+  },
+  {
+    id: 8,
+    name: "Germany Jercy (Away)",
+    price: 950,
+    category: "apparel",
+    badges: ["new"],
+    image: "/images/Germany away.jpg",
+    desc: "Sleek dark blue Germany Away Jersey with vintage elements.",
+    options: { size: ["M","L","XL","XXL"] }
+  },
+  {
+    id: 9,
+    name: "England Jercy (Home)",
+    price: 950,
+    category: "apparel",
+    badges: ["new"],
+    image: "/images/England home.jpg",
+    desc: "Classic white England Home Jersey with navy and red trim.",
+    options: { size: ["M","L","XL","XXL"] }
+  },
+  {
+    id: 10,
+    name: "England Jercy (Away)",
+    price: 950,
+    category: "apparel",
+    badges: ["new"],
+    image: "/images/England away.jpg",
+    desc: "Bold red England Away Jersey with modern dark blue accents.",
+    options: { size: ["M","L","XL","XXL"] }
   }
 ];
 
@@ -82,6 +142,42 @@ function updateTimestamps() {
 updateTimestamps();
 setInterval(updateTimestamps, 1000);
 
+// ===== WHATSAPP HELPER =====
+const WA_PHONE = "8801950919241";
+
+function buildWhatsAppLink(product, size) {
+  let msg = "";
+  msg += "------------------------------\n";
+  msg += "     PROKIT BD - New Order\n";
+  msg += "------------------------------\n\n";
+  msg += "Product: *" + product.name + "*\n";
+  msg += "Price: *" + product.price + " BDT*\n";
+  if (size) msg += "Size: *" + size + "*\n";
+  msg += "\n" + product.desc + "\n";
+  msg += "\n------------------------------\n";
+  msg += "Sent from PROKIT BD Store";
+  return "https://wa.me/" + WA_PHONE + "?text=" + encodeURIComponent(msg);
+}
+
+function buildCartWhatsAppLink() {
+  let msg = "";
+  msg += "------------------------------\n";
+  msg += "     PROKIT BD - Cart Order\n";
+  msg += "------------------------------\n\n";
+  cart.forEach(function(item, i) {
+    msg += (i + 1) + ". *" + item.product.name + "*";
+    if (item.opts.size) msg += " | Size: " + item.opts.size;
+    msg += " | Qty: " + item.qty;
+    msg += " | " + (item.product.price * item.qty) + " BDT\n";
+  });
+  var total = cart.reduce(function(sum, i) { return sum + i.product.price * i.qty; }, 0);
+  msg += "\n------------------------------\n";
+  msg += "TOTAL: *" + total + " BDT*\n";
+  msg += "------------------------------\n";
+  msg += "Sent from PROKIT BD Store";
+  return "https://wa.me/" + WA_PHONE + "?text=" + encodeURIComponent(msg);
+}
+
 // ===== RENDER PRODUCTS =====
 function badgeHTML(badges) {
   return badges.map(b => {
@@ -115,7 +211,7 @@ function renderProducts(filter = "all") {
         <span class="product-card-name">${p.name}</span>
         <span class="product-card-price">${p.price} BDT</span>
       </div>
-      <a href="https://wa.link/63gh5d" target="_blank" class="order-btn-grid" style="
+      <a href="${buildWhatsAppLink(p, null)}" target="_blank" class="order-btn-grid" style="
         display: block;
         margin: 0 1.1rem 1.1rem;
         padding: 0.6rem;
@@ -186,6 +282,22 @@ function openModal(p) {
     modalOptions.appendChild(label);
     modalOptions.appendChild(sel);
   }
+  // Update modal WhatsApp button
+  const modalWaBtn = document.getElementById("modal-wa-btn");
+  if (modalWaBtn) {
+    const updateModalWaLink = () => {
+      const sizeEl = document.getElementById("modal-size-select");
+      const size = sizeEl ? sizeEl.value : null;
+      modalWaBtn.href = buildWhatsAppLink(p, size);
+    };
+    updateModalWaLink();
+    // Update link when size changes
+    setTimeout(() => {
+      const sizeEl = document.getElementById("modal-size-select");
+      if (sizeEl) sizeEl.addEventListener("change", updateModalWaLink);
+    }, 0);
+  }
+
   modalOverlay.classList.add("open");
   modalOverlay.setAttribute("aria-hidden","false");
   document.body.style.overflow = "hidden";
@@ -257,6 +369,9 @@ function renderCart() {
       el.querySelector(".cart-item-remove").addEventListener("click", () => removeFromCart(item.key));
       cartItemsEl.appendChild(el);
     });
+    // Update cart WhatsApp checkout link
+    const checkoutBtn = document.getElementById("btn-checkout");
+    if (checkoutBtn) checkoutBtn.href = buildCartWhatsAppLink();
   }
 }
 
