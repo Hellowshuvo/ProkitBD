@@ -3,7 +3,7 @@ const products = [
   {
     id: 1,
     name: "Argentina Jercy (Home)",
-    price: 950,
+    price: 990,
     category: "apparel",
     badges: ["new"],
     image: "/images/argentina_home.jpg",
@@ -13,7 +13,7 @@ const products = [
   {
     id: 2,
     name: "Argentina Jercy (Away)",
-    price: 950,
+    price: 990,
     category: "apparel",
     badges: ["new"],
     image: "/images/argentina_away.jpg",
@@ -23,7 +23,7 @@ const products = [
   {
     id: 3,
     name: "Portugal Jercy (Home)",
-    price: 950,
+    price: 990,
     category: "apparel",
     badges: ["new"],
     image: "/images/portugal_home.jpg",
@@ -33,7 +33,7 @@ const products = [
   {
     id: 4,
     name: "Portugal Jercy (Away)",
-    price: 950,
+    price: 990,
     category: "apparel",
     badges: ["new"],
     image: "/images/portugal_away.jpg",
@@ -43,7 +43,7 @@ const products = [
   {
     id: 5,
     name: "Brazil Jercy (Special Edition)",
-    price: 950,
+    price: 990,
     category: "apparel",
     badges: ["new", "bestseller"],
     image: "/images/brazil_special.jpg.jpg",
@@ -53,7 +53,7 @@ const products = [
   {
     id: 6,
     name: "Brazil Jercy (Home)",
-    price: 950,
+    price: 990,
     category: "apparel",
     badges: ["new"],
     image: "/images/Brazil Yellow.jpg",
@@ -63,7 +63,7 @@ const products = [
   {
     id: 7,
     name: "Germany Jercy (Home)",
-    price: 950,
+    price: 990,
     category: "apparel",
     badges: ["new"],
     image: "/images/Germany Home.jpg",
@@ -73,7 +73,7 @@ const products = [
   {
     id: 8,
     name: "Germany Jercy (Away)",
-    price: 950,
+    price: 990,
     category: "apparel",
     badges: ["new"],
     image: "/images/Germany away.jpg",
@@ -83,7 +83,7 @@ const products = [
   {
     id: 9,
     name: "England Jercy (Home)",
-    price: 950,
+    price: 990,
     category: "apparel",
     badges: ["new"],
     image: "/images/England home.jpg",
@@ -93,7 +93,7 @@ const products = [
   {
     id: 10,
     name: "England Jercy (Away)",
-    price: 950,
+    price: 990,
     category: "apparel",
     badges: ["new"],
     image: "/images/England away.jpg",
